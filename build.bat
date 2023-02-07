@@ -1,7 +1,15 @@
 @echo off
 setlocal
 
+echo "Test Run GOV before"
+goversioninfo
+
 set PATH=%PATH%;%GOPATH%\bin
+
+echo "Test Run GOV after"
+goversioninfo
+
+echo %PATH%
 
 @rem Build all by default
 if [%1]==[] (
