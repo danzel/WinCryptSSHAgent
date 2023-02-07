@@ -1,6 +1,8 @@
 @echo off
 setlocal
 
+set PATH=%PATH%;%GOPATH%\bin
+
 @rem Build all by default
 if [%1]==[] (
 	go generate
