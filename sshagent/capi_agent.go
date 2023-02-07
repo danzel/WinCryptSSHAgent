@@ -137,12 +137,11 @@ func (s *CAPIAgent) SignWithFlags(key ssh.PublicKey, data []byte, flags agent.Si
 	wanted := key.Marshal()
 	for _, k := range s.keys {
 		if bytes.Equal(k.signer.PublicKey().Marshal(), wanted) {
+			utils.Notify(
+				"Signing",
+				"Tap to Sign with Certificate <"+k.comment+">",
+			)
 			if flags == 0 {
-				utils.Notify(
-					"Signing",
-					"Tap to Sign with Certificate <"+k.comment+">",
-				)
-
 				sign, err := k.signer.Sign(rand.Reader, data)
 				if err == nil {
 					s.signed(k.comment)
